@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useNavigate } from 'react-router-dom'
+import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import {
   LayoutDashboard, Upload, FolderOpen, BookOpen, Newspaper,
@@ -36,13 +36,12 @@ export default function Layout() {
       <aside className="w-64 flex flex-col border-r border-slate-200 dark:border-slate-800
                         bg-white dark:bg-slate-900">
         {/* Brand */}
-        <div className="flex items-center gap-2.5 px-5 py-4 border-b border-slate-100 dark:border-slate-800">
-          <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-            <FileText size={16} className="text-white" />
-          </div>
-          <span className="font-semibold text-slate-900 dark:text-white tracking-tight">DocVault</span>
-        </div>
-
+<Link to="/" className="flex items-center gap-2.5 px-5 py-4 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+  <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+    <FileText size={16} className="text-white" />
+  </div>
+  <span className="font-semibold text-slate-900 dark:text-white tracking-tight">DocVault</span>
+</Link>
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           <NavLink to="/dashboard" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>

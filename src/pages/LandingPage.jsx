@@ -88,18 +88,16 @@ export default function LandingPage() {
       {/* ── TOP UTILITY BAR ── */}
       <div className="lp-topbar">
         <div className="lp-topbar-inner">
-          <div className="lp-topbar-left">
-            {user
-              ? <UserAvatar dark={true} />
-              : <Link to="/login" className="lp-topbar-link">Login / Sign Up</Link>
-            }
-            <span className="lp-dot">•</span>
-            <a href="#" className="lp-topbar-link">Advertise With Us</a>
-            <span className="lp-dot">•</span>
-            <a href="#" className="lp-topbar-link">Help Us Improve</a>
-          </div>
-          <div className="lp-topbar-social">
-            {[
+<div className="lp-topbar-left">
+  <a href="#" className="lp-topbar-link">Advertise With Us</a>
+  <span className="lp-dot">•</span>
+  <a href="#" className="lp-topbar-link">Help Us Improve</a>
+</div>
+<div className="lp-topbar-social">
+  {user
+    ? <UserAvatar dark={true} />
+    : <Link to="/login" className="lp-topbar-link">Login / Sign Up</Link>
+  }            {[
               { icon: Facebook,       href: '#' },
               { icon: Instagram,      href: '#' },
               { icon: Youtube,        href: '#' },
