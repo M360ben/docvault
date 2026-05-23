@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: docvault
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npx serve dist -s -l $PORT
+    envVars:
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
