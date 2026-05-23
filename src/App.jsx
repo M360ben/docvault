@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout'
 import LoadingSpinner from './components/layout/LoadingSpinner'
 
 // Pages
+import LandingPage      from './pages/LandingPage'
 import LoginPage        from './pages/LoginPage'
 import RegisterPage     from './pages/RegisterPage'
 import DashboardPage    from './pages/DashboardPage'
@@ -36,6 +37,7 @@ export default function App() {
   return (
     <Routes>
       {/* Public routes */}
+      <Route path="/"         element={<LandingPage />} />
       <Route path="/login"    element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/library"  element={<PublicLibraryPage />} />
@@ -55,7 +57,7 @@ export default function App() {
         <Route path="admin" element={<RequireAdmin><AdminPage /></RequireAdmin>} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }
