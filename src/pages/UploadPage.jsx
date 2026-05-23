@@ -6,6 +6,11 @@ import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 import { UploadCloud, FileText, X, Globe, Lock } from 'lucide-react'
 
+const CATEGORIES = [
+  'House', 'Apartments', 'Design', 'Construction',
+  'Building Materials', 'Renovation', 'Vastu', 'General'
+]
+
 const ALLOWED_TYPES = [
   'application/pdf',
   'application/msword',
@@ -22,6 +27,7 @@ export default function UploadPage() {
   const [title,       setTitle]       = useState('')
   const [description, setDescription] = useState('')
   const [isPublic,    setIsPublic]    = useState(false)
+  const [category,    setCategory]    = useState('')
   const [uploading,   setUploading]   = useState(false)
   const [progress,    setProgress]    = useState(0)
 
@@ -64,13 +70,14 @@ export default function UploadPage() {
         mime_type:   file.type,
         uploaded_by: user.id,
         is_public:   isPublic,
+        category:    category || null,
         status:      'pending'
       })
       if (dbErr) throw dbErr
       setProgress(100)
 
       toast.success('Document uploaded! A moderator will review it shortly.')
-      navigate('/app/my-documents')
+      navigate('/my-documents')
     } catch (err) {
       toast.error(err.message)
     } finally {
@@ -141,6 +148,18 @@ export default function UploadPage() {
           </label>
           <textarea className="input resize-none h-24" placeholder="Briefly describe this document…"
             value={description} onChange={e => setDescription(e.target.value)} />
+        </div>
+
+
+        {/* Category */}
+        <div>
+          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+            Category <span className="text-red-500">*</span>
+          </label>
+          <select className="input" value={category} onChange={e => setCategory(e.target.value)} required>
+            <option value="">Select a category…</option>
+            {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
         </div>
 
         {/* Visibility */}

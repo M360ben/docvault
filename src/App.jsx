@@ -14,6 +14,8 @@ import PublicLibraryPage from './pages/PublicLibraryPage'
 import DocumentViewPage from './pages/DocumentViewPage'
 import ModerationPage   from './pages/ModerationPage'
 import AdminPage        from './pages/AdminPage'
+import ProfilePage      from './pages/ProfilePage'
+import MyFeedPage       from './pages/MyFeedPage'
 
 function RequireAuth({ children }) {
   const { user, loading } = useAuth()
@@ -24,13 +26,13 @@ function RequireAuth({ children }) {
 function RequireMod({ children }) {
   const { isModerator, loading } = useAuth()
   if (loading) return <LoadingSpinner />
-  return isModerator ? children : <Navigate to="/app/dashboard" replace />
+  return isModerator ? children : <Navigate to="/dashboard" replace />
 }
 
 function RequireAdmin({ children }) {
   const { isAdmin, loading } = useAuth()
   if (loading) return <LoadingSpinner />
-  return isAdmin ? children : <Navigate to="/app/dashboard" replace />
+  return isAdmin ? children : <Navigate to="/dashboard" replace />
 }
 
 export default function App() {
@@ -43,12 +45,15 @@ export default function App() {
       <Route path="/library"  element={<PublicLibraryPage />} />
       <Route path="/doc/:id"  element={<DocumentViewPage />} />
 
-	{/* Auth-required routes */}
-	<Route path="/app" element={<RequireAuth><Layout /></RequireAuth>}>
-        <Route index element={<Navigate to="/app/dashboard" replace />} />
+      {/* Auth-required routes */}
+      <Route path="/app" element={<RequireAuth><Layout /></RequireAuth>}>
+        <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard"    element={<DashboardPage />} />
         <Route path="upload"       element={<UploadPage />} />
         <Route path="my-documents" element={<MyDocumentsPage />} />
+
+        <Route path="profile"      element={<ProfilePage />} />
+        <Route path="my-feed"      element={<MyFeedPage />} />
 
         {/* Moderator routes */}
         <Route path="moderation" element={<RequireMod><ModerationPage /></RequireMod>} />

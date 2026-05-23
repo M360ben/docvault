@@ -1,11 +1,12 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import {
-  LayoutDashboard, Upload, FolderOpen, BookOpen,
+  LayoutDashboard, Upload, FolderOpen, BookOpen, Newspaper,
   ShieldCheck, Settings, LogOut, FileText, Moon, Sun
 } from 'lucide-react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+import UserAvatar from './UserAvatar'
 
 const navItem = 'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium ' +
   'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 ' +
@@ -44,13 +45,13 @@ export default function Layout() {
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          <NavLink to="/app/dashboard" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/dashboard" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <LayoutDashboard size={16} /> Dashboard
           </NavLink>
-          <NavLink to="/app/upload" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/upload" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <Upload size={16} /> Upload Document
           </NavLink>
-          <NavLink to="/app/my-documents" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/my-documents" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <FolderOpen size={16} /> My Documents
           </NavLink>
           <NavLink to="/library" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
@@ -62,7 +63,7 @@ export default function Layout() {
               <div className="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-600 uppercase tracking-wider">
                 Moderation
               </div>
-              <NavLink to="/app/moderation" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+              <NavLink to="/moderation" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
                 <ShieldCheck size={16} /> Review Queue
               </NavLink>
             </>
@@ -73,7 +74,7 @@ export default function Layout() {
               <div className="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-600 uppercase tracking-wider">
                 Admin
               </div>
-              <NavLink to="/app/admin" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+              <NavLink to="/admin" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
                 <Settings size={16} /> Admin Panel
               </NavLink>
             </>
@@ -86,14 +87,14 @@ export default function Layout() {
             {dark ? <Sun size={16} /> : <Moon size={16} />}
             {dark ? 'Light mode' : 'Dark mode'}
           </button>
-          <button onClick={handleSignOut} className={navItem + ' w-full text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20'}>
-            <LogOut size={16} /> Sign out
-          </button>
-          <div className="px-3 py-2 mt-1">
-            <p className="text-xs font-medium text-slate-900 dark:text-white truncate">
-              {profile?.display_name || user?.email}
-            </p>
-            <p className="text-xs text-slate-500 capitalize">{profile?.role ?? 'user'}</p>
+          <div className="flex items-center justify-between px-3 py-2 mt-1">
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-slate-900 dark:text-white truncate">
+                {profile?.display_name || user?.email}
+              </p>
+              <p className="text-xs text-slate-500 capitalize">{profile?.role ?? 'user'}</p>
+            </div>
+            <UserAvatar />
           </div>
         </div>
       </aside>

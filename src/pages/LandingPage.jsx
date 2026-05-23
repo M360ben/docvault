@@ -5,6 +5,8 @@ import {
   MessageCircle, Mail, Search, ChevronDown, Menu, X,
   ArrowRight, BookOpen
 } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
+import UserAvatar from '../components/layout/UserAvatar'
 import './LandingPage.css'
 
 const CATEGORIES = [
@@ -75,6 +77,7 @@ const YELLOW_SECTIONS = [
 ]
 
 export default function LandingPage() {
+  const { user } = useAuth()
   const [menuOpen,   setMenuOpen]   = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [email,      setEmail]      = useState('')
@@ -86,7 +89,10 @@ export default function LandingPage() {
       <div className="lp-topbar">
         <div className="lp-topbar-inner">
           <div className="lp-topbar-left">
-            <Link to="/login" className="lp-topbar-link">Login / Sign Up</Link>
+            {user
+              ? <UserAvatar dark={true} />
+              : <Link to="/login" className="lp-topbar-link">Login / Sign Up</Link>
+            }
             <span className="lp-dot">•</span>
             <a href="#" className="lp-topbar-link">Advertise With Us</a>
             <span className="lp-dot">•</span>
