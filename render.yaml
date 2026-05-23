@@ -2,6 +2,7 @@ services:
   - type: web
     name: docvault
     env: node
+    nodeVersion: 20
     buildCommand: npm install && npm run build
     startCommand: npx serve dist -s -l $PORT
     envVars:
@@ -9,3 +10,4 @@ services:
         sync: false
       - key: VITE_SUPABASE_ANON_KEY
         sync: false
+
