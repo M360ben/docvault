@@ -16,7 +16,7 @@ export default function LoginPage() {
     setLoading(false)
     if (error) { toast.error(error.message); return }
     toast.success('Welcome back!')
-    navigate('/dashboard')
+    navigate('/app/dashboard')
   }
 
   return (

@@ -44,13 +44,13 @@ export default function Layout() {
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          <NavLink to="/dashboard" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/app/dashboard" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <LayoutDashboard size={16} /> Dashboard
           </NavLink>
-          <NavLink to="/upload" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/app/upload" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <Upload size={16} /> Upload Document
           </NavLink>
-          <NavLink to="/my-documents" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+          <NavLink to="/app/my-documents" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
             <FolderOpen size={16} /> My Documents
           </NavLink>
           <NavLink to="/library" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
@@ -62,7 +62,7 @@ export default function Layout() {
               <div className="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-600 uppercase tracking-wider">
                 Moderation
               </div>
-              <NavLink to="/moderation" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+              <NavLink to="/app/moderation" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
                 <ShieldCheck size={16} /> Review Queue
               </NavLink>
             </>
@@ -73,7 +73,7 @@ export default function Layout() {
               <div className="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-600 uppercase tracking-wider">
                 Admin
               </div>
-              <NavLink to="/admin" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
+              <NavLink to="/app/admin" className={({ isActive }) => `${navItem} ${isActive ? navActive : ''}`}>
                 <Settings size={16} /> Admin Panel
               </NavLink>
             </>

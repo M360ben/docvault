@@ -72,7 +72,7 @@ export default function DashboardPage() {
         <div className="lg:col-span-2 card">
           <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800">
             <h2 className="font-semibold text-slate-900 dark:text-white">Recent uploads</h2>
-            <Link to="/my-documents" className="text-xs text-brand-600 hover:underline">View all</Link>
+            <Link to="/app/my-documents" className="text-xs text-brand-600 hover:underline">View all</Link>
           </div>
           {loading ? (
             <div className="p-8 text-center text-slate-400 text-sm">Loading…</div>
@@ -80,7 +80,7 @@ export default function DashboardPage() {
             <div className="p-8 text-center">
               <FileText size={32} className="mx-auto text-slate-300 mb-2" />
               <p className="text-sm text-slate-500">No documents yet.</p>
-              <Link to="/upload" className="btn-primary mt-3 inline-flex">Upload your first doc</Link>
+              <Link to="/app/upload" className="btn-primary mt-3 inline-flex">Upload your first doc</Link>
             </div>
           ) : (
             <ul className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -106,7 +106,7 @@ export default function DashboardPage() {
           <div className="card p-5">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-3">Quick actions</h2>
             <div className="space-y-2">
-              <Link to="/upload" className="btn-primary w-full justify-center">
+              <Link to="/app/upload" className="btn-primary w-full justify-center">
                 <Upload size={14} /> Upload document
               </Link>
               <Link to="/library" className="btn-secondary w-full justify-center">

@@ -70,7 +70,7 @@ export default function UploadPage() {
       setProgress(100)
 
       toast.success('Document uploaded! A moderator will review it shortly.')
-      navigate('/my-documents')
+      navigate('/app/my-documents')
     } catch (err) {
       toast.error(err.message)
     } finally {
